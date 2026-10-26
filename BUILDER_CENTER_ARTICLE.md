@@ -4,7 +4,7 @@
 **Hackathon:** AWS Weekend Challenge: "Give Your Agent a Tool" (Oct 23 - 26, 2026)  
 **Tags:** `#strands-decider-2b`, `#amazon-s3`, `#amazon-bedrock`, `#guardrails`, `#policy-grounding`, `#weekend-challenge`  
 **Video Demo Walkthrough (YouTube):** *[Insert your public YouTube / Vimeo link here]*  
-**Live Interactive Dashboard:** [https://aegis-ops-livid.vercel.app/](https://aegis-ops-livid.vercel.app/)  
+**Live Interactive Dashboard:** [https://aegis-ops-v2.vercel.app/](https://aegis-ops-v2.vercel.app/)  
 **GitHub Repository:** [https://github.com/JeedimetlaCharan704/aegis-ops-v2](https://github.com/JeedimetlaCharan704/aegis-ops-v2)  
 
 ---

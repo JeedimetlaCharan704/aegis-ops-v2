@@ -3,14 +3,14 @@
 [![Hackathon](https://img.shields.io/badge/AWS%20Weekend%20Challenge-Give%20Your%20Agent%20a%20Tool-FF9900?logo=amazon-aws)](https://builder.aws.com/community)
 [![New Tool](https://img.shields.io/badge/New%20Tool-Amazon%20S3%20Runbook%20Reader-blue?logo=amazons3)](aegis_ops/tools/s3_runbook.py)
 [![YouTube Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-FF0000?logo=youtube&logoColor=white)](https://youtu.be/wBpUmVxX9Qs)
-[![Live Demo](https://img.shields.io/badge/Vercel-Live%20Demo-black?logo=vercel)](https://aegis-ops-livid.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Vercel-Live%20Demo-black?logo=vercel)](https://aegis-ops-v2.vercel.app/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.14-green.svg)](https://python.org)
 [![Pattern](https://img.shields.io/badge/Pattern-%23guardrails%20%7C%20%23s3--runbooks%20%7C%20%23tool--selection-purple.svg)](#reusable-decision-pattern)
 
 > **AegisOps v2** is an autonomous, self-healing Site Reliability Engineering (SRE) agent that integrates **Amazon S3 Operational Runbook Grounding** with Daniel Kahneman’s **Dual-Process Cognitive Architecture** (Strands Decider 2B reflex + Amazon Bedrock forensics). It eliminates the **"Agentic Blast-Radius Trap"** where ungrounded AI agents trigger cascading infrastructure outages.
 
-📺 **[Watch the Demo Walkthrough on YouTube](https://youtu.be/wBpUmVxX9Qs)** | 🚀 **[Try the Live Interactive Dashboard](https://aegis-ops-livid.vercel.app/)**
+📺 **[Watch the Demo Walkthrough on YouTube](https://youtu.be/wBpUmVxX9Qs)** | 🚀 **[Try the Live Interactive Dashboard](https://aegis-ops-v2.vercel.app/)**
 
 ---
 
