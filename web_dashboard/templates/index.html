@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisOps v2 — SRE Agent with Amazon S3 Runbook Grounding & Strands Decider 2B</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <header class="header">
+            <div class="logo-group">
+                <div class="pulse-indicator"></div>
+                <h1>AEGIS<span class="highlight">OPS</span> <span class="badge">v2 SRE AGENT</span></h1>
+            </div>
+            <div class="tags">
+                <span class="tag-pill tag-accent" style="background: #f59e0b; color: #000; font-weight: 700;">★ NEW TOOL: Amazon S3 Reader</span>
+                <span class="tag-pill tag-primary">#strands-decider-2b</span>
+                <span class="tag-pill tag-secondary">#guardrails</span>
+                <span class="tag-pill tag-accent">#amazon-bedrock</span>
+                <a href="https://youtu.be/wBpUmVxX9Qs" target="_blank" class="tag-pill" style="background: #dc2626; color: #ffffff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">▶ Video Walkthrough</a>
+                <a href="https://github.com/JeedimetlaCharan704/aegis-ops-v2" target="_blank" class="tag-pill" style="background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; text-decoration: none; font-weight: 600;">GitHub Repo</a>
+            </div>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span>SYSTEM ACTIVE • S3 RUNBOOK GROUNDED</span>
+            </div>
+        </header>
+
+        <!-- Hackathon Weekend Challenge Comparison Toggle Bar -->
+        <section class="mode-toggle-section">
+            <div class="mode-toggle-card">
+                <div class="mode-toggle-info">
+                    <span class="mode-title">WEEKEND CHALLENGE: BEFORE VS. AFTER DEMONSTRATION</span>
+                    <span class="mode-subtitle">Experience what the agent does NOW with the Amazon S3 Runbook tool that it could NOT do before</span>
+                </div>
+                <div class="mode-switch-group">
+                    <button id="modeBeforeBtn" class="mode-btn mode-before" onclick="setMode('before')">
+                        <span class="mode-indicator red-dot"></span>
+                        <strong>BEFORE (v1 Blind Mode)</strong>
+                        <small>No S3 Tool • Causes Cascading Outage</small>
+                    </button>
+                    <button id="modeAfterBtn" class="mode-btn mode-after active" onclick="setMode('after')">
+                        <span class="mode-indicator green-dot"></span>
+                        <strong>AFTER (v2 S3 Runbook Grounded)</strong>
+                        <small>Amazon S3 + Decider 2B • Zero Downtime</small>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Before/After Alert Banner -->
+        <div id="modeAlertBanner" class="alert-banner after-banner">
+            <span class="alert-icon">🛡️</span>
+            <div class="alert-text">
+                <strong id="alertBannerTitle">ACTIVE: AegisOps v2 (Amazon S3 Operational Runbook Grounding Active)</strong>
+                <p id="alertBannerDesc">The agent queries <code>s3://aegis-enterprise-runbooks/services/checkout-api-v2.json</code>. Strands Decider 2B intercepts proposed actions and clamps scale within safe blast-radius boundaries in ~43ms.</p>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <main class="dashboard-grid">
+            <!-- Left Panel: Incident Launchpad & Controls -->
+            <section class="card launchpad-card">
+                <div class="card-header">
+                    <h2>🚀 Incident Telemetry Simulator</h2>
+                    <span class="header-desc">Trigger real AWS operational events</span>
+                </div>
+                
+                <div class="preset-buttons">
+                    <button class="btn btn-preset btn-highlight" onclick="loadScenario('blast_radius')">
+                        <span class="btn-icon">💥</span>
+                        <div class="btn-text">
+                            <strong>Memory Surge (Checkout API)</strong>
+                            <small>Tests S3 Max-Replica Clamp vs Outage</small>
+                        </div>
+                    </button>
+                    <button class="btn btn-preset" onclick="loadScenario('ddos')">
+                        <span class="btn-icon">⚡</span>
+                        <div class="btn-text">
+                            <strong>DDoS Traffic Surge</strong>
+                            <small>WAF IP Blocklist Intercept</small>
+                        </div>
+                    </button>
+                    <button class="btn btn-preset" onclick="loadScenario('rds')">
+                        <span class="btn-icon">🗄️</span>
+                        <div class="btn-text">
+                            <strong>Aurora RDS Pool Exhaustion</strong>
+                            <small>Auto-Provision Read Replica</small>
+                        </div>
+                    </button>
+                    <button class="btn btn-preset btn-danger-glow" onclick="loadScenario('injection')">
+                        <span class="btn-icon">🛑</span>
+                        <div class="btn-text">
+                            <strong>Adversarial Prompt Injection</strong>
+                            <small>Attacker attempts to DROP database</small>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="input-group">
+                    <label for="incidentInput">Incident Telemetry / CloudWatch Payload:</label>
+                    <textarea id="incidentInput" rows="4" placeholder="Enter custom telemetry or select a preset..."></textarea>
+                </div>
+
+                <div class="action-row">
+                    <button id="runBtn" class="btn btn-primary" onclick="triggerSimulation()">
+                        ⚡ RUN DUAL-BRAIN AGENT
+                    </button>
+                    <button id="benchBtn" class="btn btn-secondary" onclick="runBenchmarks()">
+                        📊 RUN BENCHMARKS
+                    </button>
+                    <button id="chaosBtn" class="btn btn-chaos" onclick="triggerChaosStorm(50)">
+                        🐒 CHAOS STORM (50 BURST)
+                    </button>
+                </div>
+            </section>
+
+            <!-- Center Metric Bar -->
+            <section class="metrics-bar">
+                <div class="metric-card">
+                    <span class="metric-title">S3 RETRIEVAL LATENCY</span>
+                    <span id="metricS3Lat" class="metric-value text-amber">12.4 ms</span>
+                    <span class="metric-sub text-green">s3://aegis-runbooks</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-title">DECIDER 2B REFLEX</span>
+                    <span id="metricDeciderLat" class="metric-value text-cyan">43.2 ms</span>
+                    <span class="metric-sub text-green">⚡ ~36x FASTER</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-title">BEDROCK FORENSICS</span>
+                    <span id="metricBedrockLat" class="metric-value text-purple">1,540 ms</span>
+                    <span class="metric-sub">Claude 3.5 Synthesis</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-title">PRODUCTION OUTCOME</span>
+                    <span id="metricOutcome" class="metric-value text-green">PROTECTED</span>
+                    <span id="metricOutcomeSub" class="metric-sub text-green">Zero Blast Radius</span>
+                </div>
+            </section>
+
+            <!-- NEW SECTION: Amazon S3 Operational Runbook Vault Card -->
+            <section class="card s3-runbook-card">
+                <div class="card-header">
+                    <h2>📦 Amazon S3 Operational Runbook Vault (New Tool)</h2>
+                    <span class="header-desc">Cryptographically grounded operational policies from S3 bucket</span>
+                </div>
+                <div class="s3-grid">
+                    <div class="s3-meta-item">
+                        <span class="label">S3 Bucket & Key:</span>
+                        <span class="value font-mono text-cyan" id="s3Uri">s3://aegis-enterprise-runbooks/services/checkout-api-v2.json</span>
+                    </div>
+                    <div class="s3-meta-item">
+                        <span class="label">Runbook Version:</span>
+                        <span class="value font-mono text-amber" id="s3Version">v2.4.1 (ETag: 7f8a9b1c)</span>
+                    </div>
+                    <div class="s3-meta-item">
+                        <span class="label">Max Safe Replicas:</span>
+                        <span class="value font-bold text-green" id="s3MaxReplicas">4 Tasks Max</span>
+                    </div>
+                    <div class="s3-meta-item">
+                        <span class="label">DB Connection Pool Ceiling:</span>
+                        <span class="value font-bold text-cyan" id="s3DbCeiling">40 Connections (10/pod)</span>
+                    </div>
+                    <div class="s3-meta-item full-width">
+                        <span class="label">S3 Runbook Policy & SOP:</span>
+                        <div class="s3-sop-text" id="s3SopText">
+                            SOP-CHK-042: Under memory exhaustion or traffic spikes, scale service UP TO A MAXIMUM OF 4 REPLICAS. Scaling beyond 4 tasks WILL trigger Aurora database connection pool exhaustion and crash the primary checkout database cluster.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dual-Brain Visualization Section -->
+            <section class="dual-brain-container">
+                <!-- System 1: Strands Decider 2B Card -->
+                <div class="card brain-card system-1">
+                    <div class="brain-header">
+                        <div class="brain-title">
+                            <span class="brain-badge bg-cyan">SYSTEM 1</span>
+                            <h3>Strands Decider 2B</h3>
+                        </div>
+                        <span class="latency-pill" id="deciderPill">~43 ms</span>
+                    </div>
+                    <p class="brain-desc">Sub-50ms reflex gating. Verifies parameters against S3 runbook policies and stops prompt injection before AWS execution.</p>
+                    
+                    <div class="telemetry-block">
+                        <div class="telemetry-row">
+                            <span class="label">Severity Verdict:</span>
+                            <span class="value text-cyan" id="deciderSeverity">—</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="label">Tool Selected:</span>
+                            <span class="value font-mono" id="deciderTool">—</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="label">Tool Parameters:</span>
+                            <span class="value font-mono text-amber" id="toolParams">—</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="label">Intervention Action:</span>
+                            <span class="value font-bold" id="guardrailAction">—</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="label">Calibrated Confidence:</span>
+                            <span class="value font-mono text-green" id="guardrailConfidence">—</span>
+                        </div>
+                        <div class="telemetry-row">
+                            <span class="label">Policy & Reason:</span>
+                            <span class="value text-muted" id="guardrailReason">Awaiting telemetry input...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System 2: Amazon Bedrock Card -->
+                <div class="card brain-card system-2">
+                    <div class="brain-header">
+                        <div class="brain-title">
+                            <span class="brain-badge bg-purple">SYSTEM 2</span>
+                            <h3>Amazon Bedrock (Claude 3.5)</h3>
+                        </div>
+                        <span class="latency-pill" id="bedrockPill">~1,540 ms</span>
+                    </div>
+                    <p class="brain-desc">Deep generative reasoning engine. Synthesizes root-cause forensics and post-mortems citing S3 runbook audit trails.</p>
+                    
+                    <div class="forensics-box" id="bedrockOutput">
+                        <em class="text-muted">Awaiting incident execution to generate forensic post-mortem...</em>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chaos Alert Storm Card -->
+            <section class="card chaos-card" id="chaosCard" style="display: none;">
+                <div class="card-header">
+                    <h2>🐒 High-Frequency Chaos Alert Storm Results</h2>
+                    <span class="header-desc text-green">Stress-testing Decider 2B throughput under alert inundation</span>
+                </div>
+                <div class="chaos-stats-grid">
+                    <div class="chaos-stat">
+                        <span class="chaos-label">INCIDENTS INGESTED</span>
+                        <span class="chaos-val text-cyan" id="chaosTotalIncidents">50</span>
+                    </div>
+                    <div class="chaos-stat">
+                        <span class="chaos-label">DECIDER 2B DURATION</span>
+                        <span class="chaos-val text-green" id="chaosDeciderTime">2.4s</span>
+                        <small class="text-muted" id="chaosBedrockEst">vs 77.5s on Bedrock</small>
+                    </div>
+                    <div class="chaos-stat">
+                        <span class="chaos-label">DECISION THROUGHPUT</span>
+                        <span class="chaos-val text-cyan" id="chaosThroughput">21.8 / sec</span>
+                    </div>
+                    <div class="chaos-stat">
+                        <span class="chaos-label">ATTACKS INTERCEPTED</span>
+                        <span class="chaos-val text-red" id="chaosAttacksBlocked">12</span>
+                        <small class="text-green">Zero Data Loss</small>
+                    </div>
+                    <div class="chaos-stat">
+                        <span class="chaos-label">BURST DOLLARS SAVED</span>
+                        <span class="chaos-val text-green" id="chaosDollarsSaved">+$1.50</span>
+                        <small class="text-muted">Zero LLM Tokens Burned</small>
+                    </div>
+                    <div class="chaos-stat">
+                        <span class="chaos-label">SPEEDUP FACTOR</span>
+                        <span class="chaos-val text-green" id="chaosSpeedup">32.3x</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benchmark Results Modal / Container -->
+            <section class="card benchmark-card" id="benchmarkCard" style="display: none;">
+                <div class="card-header">
+                    <h2>📊 Strands Decider 2B vs. Amazon Bedrock Benchmark Report</h2>
+                    <span class="header-desc">Empirical measurement of latency, token savings, and cost reduction</span>
+                </div>
+                <div class="table-container">
+                    <table class="benchmark-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Pattern</th>
+                                <th>Decider 2B Latency</th>
+                                <th>Bedrock Latency</th>
+                                <th>Speedup</th>
+                                <th>Token Cost Saved</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="benchmarkTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 2.5rem 0 1.5rem; color: #94a3b8; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: 2rem;">
+            <p style="margin: 0 0 0.5rem; font-weight: 500;"><strong>AegisOps v2</strong> — Dual-Brain Autonomous Cloud SRE Agent with Amazon S3 Runbook Grounding • Developed by <strong>Charan Jeedimetla</strong></p>
+            <p style="margin: 0; font-size: 0.85rem;">
+                <a href="https://youtu.be/wBpUmVxX9Qs" target="_blank" style="color: #f87171; margin: 0 10px; text-decoration: none; font-weight: 600;">📺 YouTube Walkthrough</a> •
+                <a href="https://github.com/JeedimetlaCharan704/aegis-ops-v2" target="_blank" style="color: #38bdf8; margin: 0 10px; text-decoration: none; font-weight: 600;">💻 GitHub Code</a> •
+                <a href="https://aegis-ops-livid.vercel.app/" target="_blank" style="color: #34d399; margin: 0 10px; text-decoration: none; font-weight: 600;">🚀 Live Dashboard</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

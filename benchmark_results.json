@@ -1,0 +1,77 @@
+{
+  "summary": {
+    "overall_decider_avg_latency_ms": 47.53,
+    "overall_bedrock_avg_latency_ms": 1550.55,
+    "overall_speedup_factor": "32.62x",
+    "total_tokens_saved_per_run": 795,
+    "projected_monthly_savings_usd": 949.5,
+    "cost_reduction_pct": "100.0% (Zero LLM token spend on fast-path decisions)"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO_1",
+      "scenario_name": "Tool Guardrail Verification",
+      "pattern_type": "Guardrails",
+      "decider_latency_ms": 75.44,
+      "bedrock_latency_ms": 1550.54,
+      "speedup_factor": 20.55,
+      "decider_cost_usd": 0.0,
+      "bedrock_cost_usd": 0.002757,
+      "cost_reduction_pct": 100.0,
+      "tokens_saved": 163,
+      "decider_confidence": 0.94
+    },
+    {
+      "scenario_id": "SCENARIO_2",
+      "scenario_name": "Adversarial Injection Interception",
+      "pattern_type": "Guardrails",
+      "decider_latency_ms": 40.67,
+      "bedrock_latency_ms": 1550.69,
+      "speedup_factor": 38.13,
+      "decider_cost_usd": 0.0,
+      "bedrock_cost_usd": 0.003801,
+      "cost_reduction_pct": 100.0,
+      "tokens_saved": 161,
+      "decider_confidence": 0.94
+    },
+    {
+      "scenario_id": "SCENARIO_3",
+      "scenario_name": "Traffic Inundation Tool Selection",
+      "pattern_type": "Tool Selection",
+      "decider_latency_ms": 40.27,
+      "bedrock_latency_ms": 1550.82,
+      "speedup_factor": 38.51,
+      "decider_cost_usd": 0.0,
+      "bedrock_cost_usd": 0.002745,
+      "cost_reduction_pct": 100.0,
+      "tokens_saved": 159,
+      "decider_confidence": 0.94
+    },
+    {
+      "scenario_id": "SCENARIO_4",
+      "scenario_name": "Operational Severity Policy",
+      "pattern_type": "Policy",
+      "decider_latency_ms": 40.66,
+      "bedrock_latency_ms": 1550.41,
+      "speedup_factor": 38.13,
+      "decider_cost_usd": 0.0,
+      "bedrock_cost_usd": 0.002736,
+      "cost_reduction_pct": 100.0,
+      "tokens_saved": 156,
+      "decider_confidence": 0.94
+    },
+    {
+      "scenario_id": "SCENARIO_5",
+      "scenario_name": "Database Connection Pool Exhaustion",
+      "pattern_type": "Tool Selection",
+      "decider_latency_ms": 40.6,
+      "bedrock_latency_ms": 1550.29,
+      "speedup_factor": 38.18,
+      "decider_cost_usd": 0.0,
+      "bedrock_cost_usd": 0.003786,
+      "cost_reduction_pct": 100.0,
+      "tokens_saved": 156,
+      "decider_confidence": 0.94
+    }
+  ]
+}

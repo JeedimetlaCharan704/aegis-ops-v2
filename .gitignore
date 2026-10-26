@@ -1,0 +1,27 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Testing & environments
+.pytest_cache/
+.env
+.venv/
+env/
+venv/
+
+# Large local media / raw recordings
+recorded_video/
+Recorded Vioce/
+*.mp4
+*.webm
+*.wav
+*.m4a
+
+# Local submission helper notes (keep locally, ignore in repo)
+FULL_BODY_TEXT.md
+SUBMISSION_PACKAGE.md
+
+# Vercel
+.vercel
